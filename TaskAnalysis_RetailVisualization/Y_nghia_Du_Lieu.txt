@@ -1,0 +1,31 @@
+Ý nghĩa của dữ liệu:
+
+Table District: Đại lý - từng Quận
+	- DistrictID		: Mã đại lý
+	- District		: Quận
+	- DM			: Người QL của Đại lý
+
+Table Item: Sản phẩm
+	- ItemID		: Mã SP
+	- Segment		: Bộ phận
+	- Category		: Nhóm
+
+Table Store: Cửa hàng
+	- LocationID		: Mã cửa hàng
+	- Territory		: Lãnh thổ
+	- OpenDate		: Ngày khai trương
+	- SellingAreaSize	: Diện tích của cửa hàng
+	- Chain			: Loại cửa hàng kinh doanh
+	- Store Type		: Loại cửa hàng mới(2014) / cũ(trước 2014)
+
+Table Sales: Bán hàng
+	- Sum_Regular_Sales_Dollars	: Doanh thu Regular
+	- Sum_Markdown_Sales_Dollars	: Doanh thu Markdown
+	- Sum_Regular_Sales_Units	: Số lượng Regular
+	- Sum_Markdown_Sales_Units	: Số lượng Markdown
+	- ScienarioID			: =1 là năm hiện hành
+					: =2 là năm trước
+
+Table Time: Bảng ngày
+	- Period	: Tháng (bằng số)
+	- FiscalMonth	: Tháng (bằng chữ)
