@@ -8,13 +8,35 @@
 # Hi there 👋🏻
 Good morning or good evening, depending on your time of day!
 
-## Documentation PowerBI - A Hands-On Project
-This repository contains the documentation for a hands-on project in PowerBI, which is part of the NC296 class orgainized by the Universiy of Science. The goal of the projects is to design data models, create measures, and develop insightful visualization using retail sales data.
+## Project Overview
+This repository contains the documentation for a hands-on PowerBI project as part of the NC296 class orgainized by the Universiy of Science. The goal of the projects is to design data models, create measures, and develop insightful visualization using retail sales data.
 
-### Data Description
-The data used in this project is from a sample Retail Analysis dataset. Below is the description of the tables and their fields:
+I have completed three main dashboards:
+Three main dashboards were developed for this project:
+<ol>
+<li><b>Store Sales Overview:</b>
+This dashboard provides an overall view of store performance, including total sales, sales variance, and sales distribution across various store types and chains.
+<p><img alt="Store Sales Overview" src="dashBoard_Image/StoreSalesOverview.png">
+<em>A summary of sales performance across all stores, with visualizations highlighting key metrics such as total sales, total sales variance, and average sales per unit.</em>
+</p> </li>
+<li><b>District Monthly Sales:</b>
+This report visualizes sales performance across different districts on a monthly basis. It highlights sales trends, comparing current and previous year sales, and includes variance analysis.
+<p><img alt="District Monthly Sales" src="dashBoard_Image/DistrictMonthlySale.png"> <em>Focuses on district-level performance, providing a monthly breakdown of sales by district. Key metrics like sales variance and district comparisons are visually represented.</em>
+</p></li>
+<li><b>New Stores Analysis</b>
+
+This dashboard explores new store openings, their impact on sales, and geographical distribution. It includes a map visualization of store locations, a breakdown of sales by month, and an analysis of sales per square foot.
+<p><img alt="New Stores Analysis" src="dashBoard_Image/NewStoreAnalysisPbix.png"><em> Analyzes the performance of new stores, with visualizations showing open store counts, sales per square foot, and sales by postal code and chain.</em>
+</p> </li>
+</ol>
+
+## Data Description
+The project utilizes a sample Retail Analysis dataset, including details on districts, items, stores, sales, and time periods.
+
+There are key fields of DistrictID, ItemID, LocaitonID, OpendDate, and various sales figures. In short, the objectice was to process and visualize to answer 19 specific questions, which were part of the assignment.
+### Data Dictionary
 <details>
-<summary> Data Interpret Table </summary>
+<summary>Data Dictionary Table </summary>
 
 |  Table  | Frield Name  |Description                         |
 |--------:|--------------|------------------------------------|
@@ -37,48 +59,52 @@ The data used in this project is from a sample Retail Analysis dataset. Below is
 |         | ScenarioID                    | =1 là năm hiện hành, =2 là năm trước |
 |Time     | Period       | Tháng (bằng số)      |
 |         | FiscalMonth  | Tháng (bằng chữ)     |
-
 </details>
 
-### Steps and Visualizations
-Data Model Design
+### Key Measures and Calculations
+
 1. **Review the data structure from Truc_quan_hoa.pdf.**
-
+    - To analyze the data, the following key measures were created.
 2. **Create a group "Key Measure" to contains the following measures:**
-- **Markdown_Sales_Dollars** = `SUM(Sales[Sum_Markdown_Sales_Dollars])`
-- **Regular_Sales_Dollars** = `SUM(Sales[Sum_Regular_Sales_Dollars])`
-- **Markdown_Sales_Units** = `SUM(Sales[Sum_Markdown_Sales_Units])`
-- **Regular_Sales_Units** = `SUM(Sales[Sum_Regular_Sales_Units])`
-- **Total Sales** = `[Markdown_Sales_Dollars] + [Regular_Sales_Dollars]`
-- **Total Units** = `[Markdown_Sales_Units] + [Regular_Sales_Units]`
-- **This Year Sales** = `CALCULATE([Total Sales], Sales[ScenarioID] = 1)`
-- **Last Year Sales** = `CALCULATE([Total Sales], Sales[ScenarioID] = 2)`
+    -  **Markdown_Sales_Dollars** = `SUM(Sales[Sum_Markdown_Sales_Dollars])`
+    - **Regular_Sales_Dollars** = `SUM(Sales[Sum_Regular_Sales_Dollars])`
+    - **Markdown_Sales_Units** = `SUM(Sales[Sum_Markdown_Sales_Units])`
+    - **Regular_Sales_Units** = `SUM(Sales[Sum_Regular_Sales_Units])`
+    - **Total Sales** = `[Markdown_Sales_Dollars] + [Regular_Sales_Dollars]`
+    - **Total Units** = `[Markdown_Sales_Units] + [Regular_Sales_Units]`
+    - **This Year Sales** = `CALCULATE([Total Sales], Sales[ScenarioID] = 1)`
+    - **Last Year Sales** = `CALCULATE([Total Sales], Sales[ScenarioID] = 2)`
 
-#### Visualizations
+3. Additional calculations include:
+- **Total Sales Variance** = `[This Year Sales] - [Last Year Sales]`
+- **Total Sales Variance %** = `DIVIDE([Total Sales Variance], [Last Year Sales])`
+- **Sales Per sq Ft** (This year Sales) = `DIVIDE([Total Sales Variance], CALCULATE(DISTINCTCOUNT(Sales[MonthID]), Sales[ScenarioID] =1) * SUM(Store[SellingAreaSize])) * 12`
+- **Avg $/Units TY** = `DIVIDE([This Year Sales], [This Year Units])`
 
-1. **Pie Chart**: Visualize This Year Sales by Chain.
-2. **Clustered Column Chart**: Visualize Total Sales Variance by FiscalMonth and District Manager.
-3. **Map Chart**: Visualize This Year Sales by PostalCode and Store Type.
-4. **Scatter Chart**: Visualize Total Sales Variance %, Sales Per Sq Ft, and This Year Sales by District and District.
-5. **Line Chart**: Visualize This Year Sales by FiscalMonth.
 
-#### Report Design
+
+## Report Design
 
 1. **Design a "Store Sales Overview" report page.**
 2. **Design a "New Stores Analysis" report page.**
-3. **Create slicers for District Manager and Stores Name.**
+3. **Create slicers for "District Manager" and "Stores Name".**
 
-#### Measures for Advanced Calculations
+### Dasboard Visualizations
 
-1. **Total Sales Variance** = `[This Year Sales] - [Last Year Sales]`
-2. **Total Sales Variance %** = `DIVIDE([Total Sales Variance], [Last Year Sales])`
-3. **Sales Per Sq Ft** = `DIVIDE([This Year Sales], CALCULATE(DISTINCTCOUNT(Sales[MonthID]), Sales[ScenarioID] = 1) * SUM(Store[SellingAreaSize])) * 12`
-4. **Avg $ / Units TY** = `DIVIDE([This Year Sales], [This Year Units])`
+Each dashboard contains a variety of visualizations, including:
 
-### Conclusions
-This project aims to provide practical experience in using PowerBI to analyze and visualize retail sales data. The steps outlined above guide through data modeling, measure creation, and various visualizations to extract meaningful insights and improve decision-making processes.
+- **Map Charts**: Displaying sales distribution by postal code and store type.
+- **Line Charts**: Showing trends in sales over the fiscal months.
+- **Pie Charts**: Representing sales distribution by chain.
+- **Scatter Charts**: Analyzing sales variance, sales per square foot, and other key metrics.
 
-For any queries or further information, feel free to contact me at:
+### Challenges and Solutions
+During the creation of the "New Stores Analysis" dashboard, I encountered an issue with sorting the 'Open Month' data in chronological order. Despite using the calculated measure `Open Store Count = CALCULATE(COUNT(Store[Open Month No]), Store[Store Type]="New Store")` and sorting by the 'Open Month No' column, the data did not align as expected. This issue was noted and will be addressed in future improvements.
+
+## Submissions Details
+- Student Name: PHẠM QUANG HUY
+- Date of Birth: 07 Jan 2000
+- Location: Đồng Nai province
 
 **Email**: [phquy.0127@gmail.com](mailto:pqhuy.0127@gmail.com)
 **Phone**: [+84 38-588-4754](tel:+84385884754)
