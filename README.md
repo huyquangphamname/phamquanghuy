@@ -6,15 +6,10 @@
 </picture>
 
 # Hi there 👋🏻
-I would like to say:
-
 Good morning or good evening, depending on your time of day!
 
 ## Documentation PowerBI - A Hands-On Project
-This repository contains the documentation for a hands-on project in PowerBI, which is part of the NC296 class orgainized by the Universiy of Science.
-
-### Project Overview
-The objective of this project is to utilize PowerBI to create insightful visualizations based on retail sales data. The project involces designing data models, creating measures, and visualizing key metrics to provide actionale insights.
+This repository contains the documentation for a hands-on project in PowerBI, which is part of the NC296 class orgainized by the Universiy of Science. The goal of the projects is to design data models, create measures, and develop insightful visualization using retail sales data.
 
 ### Data Description
 The data used in this project is from a sample Retail Analysis dataset. Below is the description of the tables and their fields:
