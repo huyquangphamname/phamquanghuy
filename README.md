@@ -103,7 +103,6 @@ During the creation of the "New Stores Analysis" dashboard, I encountered an iss
 
 ## Submissions Details
 - Student Name: PHẠM QUANG HUY
-- Date of Birth: 07 Jan 2000
 - Location: Đồng Nai province
 
 **Email**: [phquy.0127@gmail.com](mailto:pqhuy.0127@gmail.com)
